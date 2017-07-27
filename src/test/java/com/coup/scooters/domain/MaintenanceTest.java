@@ -10,7 +10,9 @@ public class MaintenanceTest {
     @Test
     public void shouldReturnTheMinimumNumberOfRequiredEngineers() {
         Districts districts = new Districts(new int[]{15, 10});
-        Maintenance maintenance = new Maintenance(districts, 12, 5);
+        Manager manager = new Manager(12);
+        Engineers engineers = new Engineers(5);
+        Maintenance maintenance = new Maintenance(districts, manager, engineers);
 
         assertThat(maintenance.getRequiredFleetEngineers(), is(3));
     }
@@ -18,7 +20,9 @@ public class MaintenanceTest {
     @Test
     public void shouldReturnTheMinimumNumberOfRequiredEngineersAnotherCase() {
         Districts districts = new Districts(new int[]{11, 15, 13});
-        Maintenance maintenance = new Maintenance(districts, 9, 5);
+        Manager manager = new Manager(9);
+        Engineers engineers = new Engineers(5);
+        Maintenance maintenance = new Maintenance(districts, manager, engineers);
 
         assertThat(maintenance.getRequiredFleetEngineers(), is(7));
     }
@@ -26,7 +30,9 @@ public class MaintenanceTest {
     @Test
     public void shouldReturnTheMinimumNumberOfRequiredEngineersEvenAnyDistrictHasEnoughNumberOfScootersForTheManagerToWork() {
         Districts districts = new Districts(new int[]{8, 8, 8});
-        Maintenance maintenance = new Maintenance(districts, 9, 5);
+        Manager manager = new Manager(9);
+        Engineers engineers = new Engineers(5);
+        Maintenance maintenance = new Maintenance(districts, manager, engineers);
 
         assertThat(maintenance.getRequiredFleetEngineers(), is(4));
     }
@@ -34,7 +40,9 @@ public class MaintenanceTest {
     @Test
     public void shouldReturnTheMinimumNumberOfRequiredEngineersEvenWhenManagerDistrictNeedsMoreThanOneEngineer() {
         Districts districts = new Districts(new int[]{15, 8, 8});
-        Maintenance maintenance = new Maintenance(districts, 9, 5);
+        Manager manager = new Manager(9);
+        Engineers engineers = new Engineers(5);
+        Maintenance maintenance = new Maintenance(districts, manager, engineers);
 
         assertThat(maintenance.getRequiredFleetEngineers(), is(5));
     }

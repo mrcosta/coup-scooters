@@ -25,7 +25,7 @@ public class Districts {
         return scootersByDisctrictCopy;
     }
 
-    public void subtractManagerWorkCapacityFromItsDistrict(int[] sortedScooters, int managerCityIndex, int managerWorkCapacity) {
-        sortedScooters[managerCityIndex]-= managerWorkCapacity;
+    public void subtractManagerWorkCapacityFromItsDistrict(int[] sortedScooters, int managerDistrictIndex, int managerWorkCapacity) {
+        sortedScooters[managerDistrictIndex]-= managerWorkCapacity;
     }
 }
