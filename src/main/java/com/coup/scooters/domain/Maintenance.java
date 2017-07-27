@@ -15,7 +15,7 @@ public class Maintenance {
 
     public int getRequiredFleetEngineers() {
         int firstPossibleCityForManagerIndex = getBestDistrictForManagerToMaintain();
-        excludeManagerWorkFromItsCity(firstPossibleCityForManagerIndex);
+        excludeManagerWorkFromItsDistrict(firstPossibleCityForManagerIndex);
 
         return getNecessaryNumberOfEngineers();
     }
@@ -36,15 +36,15 @@ public class Maintenance {
         return numberOfScooters >= amountOfScootersMaintainedByManager;
     }
 
-    private void excludeManagerWorkFromItsCity(int firstPossibleCityForManagerIndex) {
-        scootersByDistrict[firstPossibleCityForManagerIndex]-= amountOfScootersMaintainedByManager;
+    private void excludeManagerWorkFromItsDistrict(int firstPossibleDistrictForManagerIndex) {
+        scootersByDistrict[firstPossibleDistrictForManagerIndex]-= amountOfScootersMaintainedByManager;
     }
 
     private int getNecessaryNumberOfEngineers() {
         int requiredEngineers = 0;
 
         for (int amountOfScootersInTheDiscrit: scootersByDistrict) {
-            if (amountOfScootersInTheDiscrit < amountOfScootersMaintainedByEngineer) {
+            if (oneEngineerIsEnoughForTheDistrict(amountOfScootersInTheDiscrit)) {
                 requiredEngineers++;
             } else {
                 requiredEngineers+= (int) Math.ceil((double) amountOfScootersInTheDiscrit / amountOfScootersMaintainedByEngineer);
@@ -52,5 +52,9 @@ public class Maintenance {
         }
 
         return requiredEngineers;
+    }
+
+    private boolean oneEngineerIsEnoughForTheDistrict(int amountOfScootersInTheDiscrit) {
+        return amountOfScootersInTheDiscrit < amountOfScootersMaintainedByEngineer && amountOfScootersInTheDiscrit > 0;
     }
 }
