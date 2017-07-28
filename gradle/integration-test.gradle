@@ -19,7 +19,7 @@ task integrationTest(type: Test) {
     outputs.upToDateWhen { false }
 }
 
-check.dependsOn integrationTest
+//check.dependsOn integrationTest
 integrationTest.mustRunAfter test
 
 tasks.withType(Test) {

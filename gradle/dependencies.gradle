@@ -1,8 +1,9 @@
 dependencies {
-    compile 'com.google.guava:guava:21.0'
     compile 'org.springframework.boot:spring-boot-starter-web:1.5.4.RELEASE'
     compile 'org.projectlombok:lombok:1.16.18'
+    compile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
 
     testCompile 'junit:junit:4.12'
     testCompile 'org.springframework.boot:spring-boot-starter-test:1.5.4.RELEASE'
+    testCompile 'com.jayway.restassured:rest-assured:2.9.0'
 }
