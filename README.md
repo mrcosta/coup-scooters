@@ -6,9 +6,23 @@
 
 # How to run
 
+It was creates a rest API. Then to start the application:
 
+```bash
+./gradlew bootRun
+```
 
+And an example of request:
 
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{"scooters": [15, 10], "C": 9, "P": 5}' http://localhost:8080/api/maintenance/required-engineers
+```
+
+Or, since that the API is deployed on heroku (using docker), you can use:
+
+```bash
+curl -H "Content-Type: application/json" -X POST -d '{"scooters": [15, 10], "C": 9, "P": 5}' http://coup-scooters.herokuapp.com/api/maintenance/required-engineers
+```
 
 ### assumptions and comments
 
@@ -19,4 +33,3 @@
 
 * create annotation to validate the values inside the list of the scooters by district, otherwise the application will crash
 * logging
-
